@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
+import { TableModule } from './table/table.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, UserComponent, AdminComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, TableModule],
   providers: [],
   bootstrap: [AppComponent],
 })
