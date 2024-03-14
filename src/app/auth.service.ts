@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserInterface } from './table/types/user.interface';
+import { Sort } from '@angular/material/sort';
 
 @Injectable({
   providedIn: 'root',
@@ -39,13 +41,11 @@ export class AuthService {
     return this.http.get<any>(url, { headers: headers });
   }
 
-  fetchAdminData() {
+  fetchAdmin(): Observable<UserInterface[]> {
     const headers = this.createHeadersWithToken();
     const url = `${this.url}api/users`;
-    return this.http.get<any>(url, { headers: headers });
+    return this.http.get<UserInterface[]>(url, { headers: headers });
   }
-
-
 
 
   // Работа с токеном
