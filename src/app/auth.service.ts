@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserInterface } from './table/types/user.interface';
-import { Sort } from '@angular/material/sort';
+import { SessionStorageService } from './session-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { Sort } from '@angular/material/sort';
 export class AuthService {
   url = 'https://user-assessment-api.vercel.app/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private sessionStorageService: SessionStorageService) {}
 
   // Если есть сохраненный токен, то он будет добавлен в заголовки
   createHeadersWithToken(): HttpHeaders {
@@ -23,6 +23,7 @@ export class AuthService {
   // Отправляем введенные логин и пароль на сервер
   login(email: string, password: string): Observable<any> {
     const body = { email, password };
+    // По идее, тут можно оптимизировать и передать сразу (this.url + 'api/login', { email, password })
     return this.http.post<any>(this.url + 'api/login', body);
   }
 
@@ -47,12 +48,29 @@ export class AuthService {
     return this.http.get<UserInterface[]>(url, { headers: headers });
   }
 
+  //Работа с ролью
+  setRole(role: string): void {
+    this.sessionStorageService.setItem('userRole', role);
+  }
+
+  getRole(): string {
+    return this.sessionStorageService.getItem('userRole');
+  }
+
+  clearSession(): void {
+    this.sessionStorageService.clear();
+  }
 
   // Работа с токеном
 
   // Метод для сохранения токена в LocalStorage
   saveToken(token: string): void {
     localStorage.setItem('token', token);
+  }
+
+  // Возвращает true, если токен существует
+  isAuthenticated(): boolean {
+    return !!this.getToken(); 
   }
 
   // Метод для получения токена из LocalStorage

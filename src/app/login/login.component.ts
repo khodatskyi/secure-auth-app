@@ -13,19 +13,20 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private apiService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    this.apiService.login(this.email, this.password).subscribe(
-      (response) => {
-        console.log('Login successful', response);
+    this.authService.login(this.email, this.password).subscribe(
+      (response) => { 
         if (response.role === 'Admin') {
+          this.authService.setRole(response.role)
           this.router.navigate(['/admin']);
         } else {
+          this.authService.setRole(response.role)
           this.router.navigate(['/user']);
         }
         // Сохраняем токен пользователя в локал сторедж
-        this.apiService.saveToken(response.token)
+        this.authService.saveToken(response.token)
       },
       (error) => {
         console.log({info: 'Данные указаны неверно!', mail: this.email, password :this.password});

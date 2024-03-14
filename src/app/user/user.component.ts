@@ -10,10 +10,10 @@ export class UserComponent implements OnInit{
 
   data = {id:''}
 
-  constructor(private apiService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.apiService.fetchUserAssessments().subscribe(
+    this.authService.fetchUserAssessments().subscribe(
       (response) => {
         console.log('User data received successful', response);
         // Полученый об`экт сохраняем в переменную
@@ -31,7 +31,7 @@ export class UserComponent implements OnInit{
   click() {
     console.log('Мы отправляем запрос');
     
-    this.apiService.fetchUserAssessmentsGraph(this.data.id).subscribe(
+    this.authService.fetchUserAssessmentsGraph(this.data.id).subscribe(
       (response) => {
         console.log('Graph received successful', response);
       },
@@ -40,5 +40,10 @@ export class UserComponent implements OnInit{
         // Обработка ошибки
       }
     )
+  }
+
+  ngOnDestroy(): void {
+    this.authService.removeToken()
+    this.authService.clearSession()
   }
 }
