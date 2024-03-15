@@ -1,28 +1,3 @@
 <p>user works!</p>
 
-<h1>Dashboard</h1>
-
-<div *ngIf="isLoading$ | async">LOADING</div>
-<div class="card-container">
-  <div class="card" *ngFor="let card of dashboard">
-    <div class="card__img"><img [src]="card.image_url" alt="img" /></div>
-    <div class="card__info">
-      <tr>
-        <h4>ID</h4>
-        <p>{{ card.id }}</p>
-      </tr>
-      <tr>
-        <h4>Name</h4>
-        <p>{{ card.name }}</p>
-      </tr>
-      <tr>
-        <h4>User Resolved</h4>
-        <p>{{ card.users_resolved }}</p>
-      </tr>
-      <tr>
-        <h4>Active</h4>
-        <p>{{ card.active }}</p>
-      </tr>
-    </div>
-  </div>
-</div>
+<app-assessments></app-assessments>

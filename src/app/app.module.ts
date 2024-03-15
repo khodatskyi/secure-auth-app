@@ -10,9 +10,11 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { TableModule } from './table/table.module';
+import { AssessmentsComponent } from './shared-components/assessments/assessments.component';
+import { GraphComponent } from './shared-components/graph/graph.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, UserComponent, AdminComponent],
+  declarations: [AppComponent, LoginComponent, UserComponent, AdminComponent, AssessmentsComponent, GraphComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, TableModule],
   providers: [],
   bootstrap: [AppComponent],
