@@ -1,0 +1,34 @@
+
+<div class="graph-container">
+  <button (click)="goBack()">Back</button>
+  <div class="graph">
+    <h1>Graph</h1>
+
+    <li>
+      <h3>agreeableness</h3>
+      <span
+        class="graph_bar"
+        [style.--agreeableness-width]="agreeableness + '%'"
+        ><span class="agreeableness"></span
+      ></span>
+    </li>
+    <li>
+      <h3>drive</h3>
+      <span class="graph_bar" [style.--drive-width]="drive + '%'"
+        ><span class="drive"></span
+      ></span>
+    </li>
+    <li>
+      <h3>luck</h3>
+      <span class="graph_bar" [style.--luck-width]="luck + '%'"
+        ><span class="luck"></span
+      ></span>
+    </li>
+    <li>
+      <h3>openness</h3>
+      <span class="graph_bar" [style.--openness-width]="openness + '%'"
+        ><span class="openness"></span
+      ></span>
+    </li>
+  </div>
+</div>
