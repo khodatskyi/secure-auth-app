@@ -1,18 +1,22 @@
-import { Component, OnDestroy } from '@angular/core';
-import { AuthService } from '../auth.service';
-
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })
-export class AdminComponent implements OnDestroy{
-  constructor(private authService: AuthService) {}
+export class AdminComponent {
+  isTableVisible = false;
+  nameButton = 'Table of Users'
 
-  ngOnDestroy(): void {
-    this.authService.removeToken()
-    this.authService.clearSession()
+  constructor() {}
+
+toggleTableVisibility() {
+  this.isTableVisible = !this.isTableVisible;
+  if(this.isTableVisible) {
+    this.nameButton = 'Dashboard of Users'
+  } else {
+    this.nameButton = 'Table of Users'
   }
+}
 }

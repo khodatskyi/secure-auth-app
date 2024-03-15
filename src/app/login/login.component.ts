@@ -19,19 +19,17 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe(
       (response) => { 
         if (response.role === 'Admin') {
-          this.authService.setRole(response.role)
           this.router.navigate(['/admin']);
         } else {
-          this.authService.setRole(response.role)
           this.router.navigate(['/user']);
         }
-        // Сохраняем токен пользователя в локал сторедж
+        // Сохраняем роль пользователя в sessionStorage
+        this.authService.setRole(response.role)
+        // Сохраняем токен пользователя в sessionStorage
         this.authService.saveToken(response.token)
       },
       (error) => {
-        console.log({info: 'Данные указаны неверно!', mail: this.email, password :this.password});
         console.error('Login error', error);
-        // Обработка ошибки
       }
     );
   }

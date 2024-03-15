@@ -9,18 +9,14 @@ export class AuthGuardService implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.authService.isAuthenticated()) {
-      const userRole = this.authService.getRole();
-      if (userRole === 'User') {
-        return true;
-      } else {
-        this.router.navigate(['/login']); 
-        return false;
-      }
-    } else{
+    if (
+      this.authService.isAuthenticated() &&
+      this.authService.getRole() === 'User'
+    ) {
+      return true;
+    } else {
       this.router.navigate(['/login']);
-      return false
-    } 
-    //
+      return false;
+    }
   }
 }
