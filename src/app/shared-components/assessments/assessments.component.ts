@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardInterface } from '../../types/dashboard.interface';
 import { ApiService } from '../../api.service';
-import { Observable, Subject  } from 'rxjs';
+import { Observable  } from 'rxjs';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 

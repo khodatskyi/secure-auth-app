@@ -1,12 +1,14 @@
-
-
 <div class="main-container">
   <button (click)="goBack()">BACK</button>
   <h1>Dashboard</h1>
 
-  <div *ngIf="isLoading$ | async">LOADING</div>
+  <div *ngIf="isLoading$ | async" [ngStyle]="{ color: 'white' }">LOADING</div>
   <div class="card-container">
-    <div class="card" *ngFor="let card of dashboard" (click)="clickOnCard(card)">
+    <div
+      class="card"
+      *ngFor="let card of dashboard"
+      (click)="clickOnCard(card)"
+    >
       <div class="card__img"><img [src]="card.image_url" alt="img" /></div>
       <div class="card__info">
         <tr>

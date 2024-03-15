@@ -4,10 +4,12 @@ import { AuthService } from '../../auth.service';
 import { Sort } from '@angular/material/sort';
 import { UserInterface } from '../types/user.interface';
 import { Subscription } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
+  styleUrl: './table.component.scss'
 })
 export class TableComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [

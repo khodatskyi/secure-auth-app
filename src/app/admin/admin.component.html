@@ -1,3 +1,15 @@
-<p>admin works!</p>
+<div class="main-container">
+  <button (click)="toggleTableVisibility()">{{ nameButton }}</button>
 
-<!-- <app-table></app-table> -->
+  <ng-container
+    *ngIf="!isTableVisible; then component1; else component2"
+  ></ng-container>
+
+  <ng-template #component1>
+    <app-assessments></app-assessments>
+  </ng-template>
+
+  <ng-template #component2>
+    <app-table></app-table>
+  </ng-template>
+</div>

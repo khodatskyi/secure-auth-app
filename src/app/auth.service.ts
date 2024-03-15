@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserInterface } from './table/types/user.interface';
 import { SessionStorageService } from './session-storage.service';
@@ -22,26 +22,11 @@ export class AuthService {
 
   // Отправляем введенные логин и пароль на сервер
   login(email: string, password: string): Observable<any> {
-    const body = { email, password };
-    // По идее, тут можно оптимизировать и передать сразу (this.url + 'api/login', { email, password })
-    return this.http.post<any>(this.url + 'api/login', body);
+    return this.http.post<any>(this.url + 'api/login', { email, password });
   }
 
 
-  // Запросы для получения данных
-
-  fetchUserAssessments() {
-    const headers = this.createHeadersWithToken();
-    const url = `${this.url}api/userassessments`;
-    return this.http.get<any>(url, { headers: headers });
-  }
-
-  fetchUserAssessmentsGraph(id: string) {
-    const headers = this.createHeadersWithToken();
-    const url = `${this.url}api/userassessments/graph${'?id=' + id}`;
-    return this.http.get<any>(url, { headers: headers });
-  }
-
+  // Запрос для получения данных
   fetchAdmin(): Observable<UserInterface[]> {
     const headers = this.createHeadersWithToken();
     const url = `${this.url}api/users`;
@@ -63,9 +48,10 @@ export class AuthService {
 
   // Работа с токеном
 
-  // Метод для сохранения токена в LocalStorage
+  // Метод для сохранения токена в sessionStorage
   saveToken(token: string): void {
-    localStorage.setItem('token', token);
+    // localStorage.setItem('token', token);
+    this.sessionStorageService.setItem('token', token);
   }
 
   // Возвращает true, если токен существует
@@ -73,13 +59,14 @@ export class AuthService {
     return !!this.getToken(); 
   }
 
-  // Метод для получения токена из LocalStorage
+  // Метод для получения токена из sessionStorage
   getToken(): string | null {
-    return localStorage.getItem('token');
+    // return localStorage.getItem('token');
+    return this.sessionStorageService.getItem('token');
   }
 
-  // Метод для удаления токена из LocalStorage
+  // Метод для удаления токена из sessionStorage
   removeToken(): void {
-    localStorage.removeItem('token');
+    this.sessionStorageService.removeItem('token');
   }
 }
