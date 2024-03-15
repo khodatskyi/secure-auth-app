@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  hint:string = ''
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -23,6 +24,7 @@ export class LoginComponent {
         } else {
           this.router.navigate(['/user']);
         }
+        this.hint = ''
         // Сохраняем роль пользователя в sessionStorage
         this.authService.setRole(response.role)
         // Сохраняем токен пользователя в sessionStorage
@@ -30,6 +32,7 @@ export class LoginComponent {
       },
       (error) => {
         console.error('Login error', error);
+        this.hint = 'login or password is not correct'
       }
     );
   }
