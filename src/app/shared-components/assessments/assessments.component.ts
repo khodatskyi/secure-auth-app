@@ -3,6 +3,7 @@ import { DashboardInterface } from '../../types/dashboard.interface';
 import { ApiService } from '../../api.service';
 import { Observable, Subject  } from 'rxjs';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-assessments',
@@ -13,7 +14,7 @@ export class AssessmentsComponent implements OnInit {
   dashboard: DashboardInterface[] = [];
   isLoading$: Observable<boolean>;
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private apiService: ApiService, private router: Router, private location: Location) {
     this.isLoading$ = this.apiService.isLoading$;
   }
 
@@ -29,5 +30,9 @@ export class AssessmentsComponent implements OnInit {
   clickOnCard(card: any) {
     this.apiService.fetchAssessmentsGraph(card.id)
     this.router.navigate(['/graph', card.id]);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
