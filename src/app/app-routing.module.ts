@@ -8,11 +8,11 @@ import { AuthAdminGuardService } from './auth-admin-guard.service';
 import { GraphComponent } from './shared-components/graph/graph.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuardService] },
-  { path: 'user', component: UserComponent, canActivate: [AuthGuardService] },
-  { path: 'graph/:id', component: GraphComponent },
+  { path: '', redirectTo: '/assessments-app/login', pathMatch: 'full' },
+  { path: '/assessments-app/login', component: LoginComponent },
+  { path: '/assessments-app/admin', component: AdminComponent, canActivate: [AuthAdminGuardService] },
+  { path: '/assessments-app/user', component: UserComponent, canActivate: [AuthGuardService] },
+  { path: '/assessments-app/graph/:id', component: GraphComponent },
   { path: '**', redirectTo: '/login' }
 ];
 
