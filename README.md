@@ -1,27 +1,50 @@
-# AssessmentsApp
+# SecureLogin
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+SecureLogin is a personal project developed using Angular. It is a simple authentication system with login functionality implemented using Angular Guards. The project consists of an authentication page where users are required to enter their credentials (username and password). Depending on the type of credentials entered (regular user or admin), the corresponding page is displayed. The routes are protected to prevent unauthorized access, ensuring a secure login process.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Visit My Website
 
-## Code scaffolding
+You can visit my website [here](https://assessment-app-37292.web.app/login).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Examples of Logins
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Request Admin:
+- **Email:** admin@deepersignals.com
+- **Password:** password
 
-## Running unit tests
+### Request User:
+- **Email:** user@deepersignals.com
+- **Password:** password
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## Features
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Authentication Page**: Allows users to enter their username and password.
+- **Guard Protection**: Routes are protected using Angular Guards to prevent unauthorized access to admin pages.
+- **Role-based Access**: Differentiates between regular user and admin login, displaying the appropriate page accordingly.
+- **Responsive Design**: The application is fully responsive, ensuring optimal user experience across various devices.
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Technologies Used
+
+- **Angular**: Frontend framework used for building the entire web application. I refined my skills in Angular by implementing authentication functionality and utilizing Angular Guards for route protection.
+- **HTML, CSS, TypeScript**: Languages used for structuring, styling, and scripting the web pages.
+- **Responsive Design**: Media queries and flexible layouts were implemented to ensure responsiveness across different screen sizes.
+
+---
+
+## Usage
+
+To run the project locally, follow these steps:
+
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Install dependencies using `npm install`.
+4. Run the development server using `ng serve`.
+
