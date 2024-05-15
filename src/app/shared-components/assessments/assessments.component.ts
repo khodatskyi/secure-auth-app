@@ -21,7 +21,6 @@ export class AssessmentsComponent implements OnInit {
   ngOnInit() {
     this.apiService.dashboard$.subscribe((data) => {
       this.dashboard = data;
-      console.log('this.dashboard', this.dashboard);
     });
 
     this.apiService.fetchDashboard();

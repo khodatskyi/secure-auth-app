@@ -25,7 +25,6 @@ export class GraphComponent implements OnInit, OnDestroy {
     // Получаем данные с сервера
     this.graphSubscription = this.apiService.graph$.subscribe((data) => {
       if (data && data.data) {
-        console.log('Graph (from API):', data.data);
         this.agreeableness = data.data.agreeableness;
         this.drive = data.data.drive;
         this.luck = data.data.luck;
@@ -39,7 +38,6 @@ export class GraphComponent implements OnInit, OnDestroy {
     const savedGraphData = localStorage.getItem('graph');
     if (savedGraphData) {
       const parsedGraphData = JSON.parse(savedGraphData);
-      console.log('Graph (from localStorage):', parsedGraphData);
 
       this.agreeableness = parsedGraphData.agreeableness;
       this.drive = parsedGraphData.drive;
